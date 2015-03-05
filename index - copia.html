@@ -1,0 +1,154 @@
+<html>
+<head>
+<script src="OpenLayers/OpenLayers.js" type="text/javascript"></script>
+<link rel="stylesheet" href="OpenLayers/theme/default/style.css" type="text/css">
+
+<script src="ext/adapter/ext/ext-base.js" type="text/javascript"></script>
+<script src="ext/ext-all.js"  type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="ext/resources/css/ext-all.css" />
+<script src="GeoExt/script/GeoExt.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="GeoExt/resources/css/geoext-all.css" />
+<script src="DrawPoints.js" type="text/javascript"></script>
+
+<script src="proj4js/lib/proj4js-compressed.js" type="text/javascript"></script>
+<script src="proj4js/lib/defs/EPSG32717.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    //Declaracion de variables para nuevas proyecciones
+    
+    
+    //var centre = new OpenLayers.LonLat(2, 46);
+      //  centre.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
+      
+      var epsg_32717 = new OpenLayers.Projection("EPSG:32717");
+      var epsg_900913 = new OpenLayers.Projection("EPSG:900913");
+      var viewparams, result;
+      var params = {
+        LAYERS: 'pgrouting:pgrouting',
+        FORMAT: 'image/png'
+      };
+      
+      function pgrouting(layer) {
+         if (layer.features.length == 2) {
+             // erase the previous route
+            // store.removeAll();
+
+             // transform the two geometries from EPSG:900913 to EPSG:4326
+             var startpoint = layer.features[0].geometry.clone();
+             //alert (startpoint.transform(epsg_900913, epsg_32717));
+             var finalpoint = layer.features[1].geometry.clone();
+             //finalpoint.transform(epsg_900913, epsg_32717);
+             alert (startpoint.transform(epsg_900913, epsg_32717));
+             alert (finalpoint.transform(epsg_900913, epsg_32717));
+             
+            //viewparams = [
+           // 'x1:' + startpoint.x, 'y1:' + startpoint.y,
+            //'x2:' + finalpoint.x, 'y2:' + finalpoint.y
+            //];
+            
+             //params.viewparams = viewparams.join(';');
+                       
+                   //  source: new Openlayers.Layer.WMS({
+              //url: 'http://localhost:8082/geoserver/pgrouting/wms',
+              //params: params
+              
+            //})
+              //  alert (result);
+         }
+    }
+      
+        
+    Ext.onReady(function() {
+        
+        var xy = new OpenLayers.LonLat(535636.0680, 9736544.9773).transform(new OpenLayers.Projection("EPSG:32717"),new OpenLayers.Projection("EPSG:900913"));
+        var panel = new GeoExt.MapPanel({
+            renderTo: 'gxmap',
+            map: {
+                layers: [new OpenLayers.Layer.OSM("Simple OSM Map")]
+            },
+            projection:new OpenLayers.Projection("EPSG:32717"),
+            center: xy,//(535636.0680, 9736544.9773),//.transform(epsg_32717,map.getProjectionObject()),
+            zoom: 10,
+            height:600,
+            width: 1200,
+            title: 'A Simple GeoExt Map'
+        });
+        
+        var map = panel.map;
+       layer = new OpenLayers.Layer.WMS("geo",
+            "http://localhost:8080/geoserver/chanduy/wms",
+            {
+            layers: 'chanduy:chanduy',
+            format: 'image/png',
+            tiled: 'true',
+            transparent: true
+            //
+            },
+        {
+           isBaseLayer: false, 
+            //singleTile:true
+            projection: 'EPSG:900913'
+        });
+         //alert ("hello");
+           //var route_layer = new OpenLayers.Layer.Vector("route", {
+            //styleMap: new OpenLayers.StyleMap(new OpenLayers.Style({
+              //  strokeColor: "#ff9933",
+                //strokeWidth: 3
+            //}))
+        //});
+
+             
+              // create the layer where the start and final points will be drawn
+        var points_layer = new OpenLayers.Layer.Vector("points");
+
+        // when a new point is added to the layer, call the pgrouting function
+        points_layer.events.on({
+            featureadded: function() {
+                pgrouting(points_layer);
+            }
+        });
+        
+        
+
+        // add the layers to the map
+       map.addLayers([points_layer, layer]);//, route_layer]);
+       //alert ("xxx");
+      // map.addLayers(layer);
+       //map.addLayers(result);
+
+        // create the control to draw the points (see the DrawPoints.js file)
+        var draw_points = new DrawPoints(points_layer);
+
+        // create the control to move the points
+        var drag_points = new OpenLayers.Control.DragFeature(points_layer, {
+            autoActivate: true
+        });
+
+        // when a point is moved, call the pgrouting function
+        drag_points.onComplete = function() {
+              pgrouting(points_layer);
+        };
+
+        // add the controls to the map
+        map.addControls([draw_points, drag_points]);
+        
+       //map.addLayer(result);
+    });
+
+</script>
+</head>
+<body>    
+    <div id="gxmap">
+    
+    </div>
+    
+    <button id="clear">clear</button>
+
+    <script type="text/javascript">
+        
+var epsg_32717 = new OpenLayers.Projection("EPSG:32717");
+var epsg_900913 = new OpenLayers.Projection("EPSG:900913");
+</script>
+
+</body>
+</html>

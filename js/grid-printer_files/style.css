@@ -1,0 +1,139 @@
+/*
+Theme Name: My Theme
+Theme URI:
+Description:
+Author: Alexandr Tumaykin
+Version: 1.0
+Tags:
+License:
+License URI:
+Author URI: http://205k.in
+*/
+
+body {
+    background: url("img/Background.jpg");
+    padding-bottom: 40px;
+}
+
+.navbar-fixed-top {
+    position: relative;
+}
+
+.navbar-inner {
+    background: url("img/nav-bg.png") repeat;
+    /*    height: 75px;*/
+}
+
+.navbar .nav .current-menu-item > a,
+.navbar .nav .current-menu-item > a:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #222222;
+}
+
+.navbar .nav li {
+    margin: 0 5px;
+}
+
+#menu-top {
+    /*    margin-top: 20px;*/
+}
+
+#menu-item-6 {
+
+}
+
+#menu-item-6 > a {
+    background: url("img/nav-home.png") no-repeat 0 0;
+    height: 40px;
+    width: 195px;
+    padding: 0;
+    font: 0/0 serif;
+    text-shadow: none;
+    color: transparent;
+}
+
+#menu-item-6 > a:hover {
+    background-position: 0 -36px;
+}
+
+#menu-item-6.current-menu-item > a {
+    background-position: 0 -76px;
+}
+
+#menu-item-470 {
+
+}
+
+#menu-item-462 > a,
+#menu-item-470 > a
+{
+    background: url("img/nav-feedback.png") no-repeat 0 0;
+    height: 39px;
+    width: 349px;
+    padding: 0;
+    text-indent: -9000px;
+}
+
+#menu-item-462 > a:hover,
+#menu-item-470 > a:hover
+{
+    background-position: 0 -40px;
+}
+
+#menu-item-462.current-menu-item > a,
+#menu-item-470.current-menu-item > a
+{
+    background-position: 0 -80px;
+}
+
+.post-info li {
+    display: inline;
+    margin-right: 5px;
+}
+
+.post{
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 20px;
+}
+
+.thumbnail {
+    margin: 0 10px 10px 0;
+    background: #fff;
+}
+
+.aligncenter{
+    text-align:center;
+}
+
+img.aligncenter
+{
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alignright
+{
+    float: right;
+}
+
+.alignleft
+{
+    float: left;
+}
+
+footer {
+    text-align: center;
+}
+
+.entry-title a {
+    color: #333;
+}
+
+.page .page-title {
+    text-align: center;
+}
+
+.linklove {display:none}

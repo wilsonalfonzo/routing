@@ -1,0 +1,123 @@
+ html, body {
+        font:normal 12px verdana;
+        margin:0;
+        padding:0;
+        border:0 none;
+        overflow:hidden;
+        height:100%;
+		}
+		p {
+			margin:5px;
+		}
+.style2 {color: #dddddd;
+			font-size:14px; 
+			font-family: verdana,cursive, Serif;
+			font-weight:bold;
+			text-shadow: 4px 4px 8px blue 
+		}
+
+.x-panel-header-text{
+	font-weight:bold;
+}
+		
+.legend { 
+            padding-left: 12px;
+        }
+        .x-tree-node-el {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 2px;
+        }
+        .x-tree-ec-icon {
+            width: 2px;
+        }
+        .gx-tree-layer-icon {
+            display: none;
+        }		
+
+.zoomsq {
+   
+    background:url(../img/icon_zoom.png) !important;    
+}
+
+
+.zoomin {
+   
+    background:url(../img/icon_zoomin.png) !important;    
+}
+
+
+
+.zoomout {
+   
+    background:url(../img/icon_zoomout.png) !important;    
+}
+
+.zoomfull {
+   
+    background:url(../img/icon_zoomfull.png) !important;    
+}
+
+.previous {
+   
+    background:url(../img/icon_previous.png) !important;    
+}
+
+.next {
+   
+    background:url(../img/icon_next.png) !important;    
+}
+.pan {
+   
+    background:url(../img/icon_pan.png) !important;    
+}
+.borrar {
+   
+    background:url(../img/borrar.png) !important;    
+}
+.print {
+  background:url(../img/printer.png) !important;    
+}
+.printly {
+  background:url(../img/printly.png) !important;    
+}
+ .olControlOverviewMap {
+        background:#ff0000; 
+        width:200px;
+  }
+ 
+	
+.medl {
+   
+    background:url(../img/medl.png) !important;    
+}
+
+.meda {
+   
+    background:url(../img/meda.png) !important;    
+}
+
+.identify {
+   
+    background:url(../img/identify2.png) !important;    
+}
+
+.routing {
+   
+    background:url(../img/route.png) !important;    
+}
+
+.removerouting {
+   
+    background:url(../img/remove-route.png) !important;    
+}
+.aplFilter{
+color:blue;
+font-size: 9px;
+}
+.filter{
+color:blue; padding-left:15px
+}
+
+.panel1{
+  padding: 0 0 10 0
+}

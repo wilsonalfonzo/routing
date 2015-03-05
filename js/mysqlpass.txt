@@ -1,0 +1,2 @@
+UPDATE mysql.user SET Password=PASSWORD('webmaster') WHERE User='root';
+FLUSH PRIVILEGES;
